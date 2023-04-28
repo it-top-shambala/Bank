@@ -10,6 +10,12 @@ struct BankAccount {
     double balance;
     string owner;
 
+    BankAccount(int number, string owner) {
+        this->number = number;
+        this->owner = owner;
+        this->balance = 0;
+    }
+
     void Deposit(double money) {
         if (money > 0) {
             balance += money;
@@ -29,9 +35,9 @@ struct BankAccount {
         }
     }
 
-    bool Transfer(double money, BankAccount& account) {
+    bool Transfer(double money, BankAccount* account) {
         if (Withdraw(money)) {
-            account.Deposit(money);
+            account->Deposit(money);
             return true;
         } else {
             return false;
@@ -39,14 +45,14 @@ struct BankAccount {
     }
 };
 
-BankAccount* OpenAccount(int number, string owner) {
-    BankAccount account;
+/*BankAccount* OpenAccount(int number, string owner) {
+    BankAccount* account = new BankAccount();
 
-    account.number = number;
-    account.owner = owner;
-    account.balance = 0;
+    account->number = number;
+    account->owner = owner;
+    account->balance = 0;
 
-    return &account;
-}
+    return account;
+}*/
 
 #endif //BANK_BANKACCOUNT_H
