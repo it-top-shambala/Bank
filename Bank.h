@@ -15,7 +15,7 @@ struct Bank {
         number = 1;
     }
 
-    void OpenAccount(string owner, double money) {
+    void OpenAccount(string owner, double money = 0) {
         number += 2;
 
         BankAccount* account = new BankAccount(number, owner);
